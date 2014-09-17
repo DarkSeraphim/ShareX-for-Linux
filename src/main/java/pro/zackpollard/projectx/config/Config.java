@@ -15,6 +15,13 @@ import java.util.*;
  */
 public class Config {
 
+    public static void main(String[] args)
+    {
+        Config c = new Config();
+        c.saveDefaultConfig();
+        c.loadConfiguration(new File("config.json"), new Logger());
+    }
+
     private final File configFile = new File("config.json");
 
     private Map<Uploader.Type, Collection<Uploader>> byType = new EnumMap<Uploader.Type, Collection<Uploader>>(Uploader.Type.class);
@@ -59,6 +66,9 @@ public class Config {
 
     public void loadConfiguration(File configFile, Logger logger) {
         String json = loadConfigurationAsString(configFile);
+        System.out.println(">>>");
+        System.out.println(json);
+        System.out.println(">>>");
         JSONObject object;
         try {
             object = new JSONObject(json);
@@ -136,7 +146,7 @@ public class Config {
         String line;
         try (BufferedReader reader = new BufferedReader(new FileReader(configFile))) {
             while((line = reader.readLine()) != null) {
-                line = reader.readLine().trim();
+                line = line.trim();
                 // Ignore comments
                 if (line.startsWith("#")) {
                     continue;

@@ -29,7 +29,7 @@
 
             # This allows you to filter out the URL from
             # the response. Do note: it's using regular expressions :P
-            "response-filter":
+            "response-filters":
             [
                 # Each regular expression will be chained
                 # in the same order as shown here for
@@ -56,7 +56,7 @@
                 "image": "",
                 "thumbnail": "",
                 "delete": ""
-            }
+            },
 
             # If you need some more headers
             "optional-headers":
